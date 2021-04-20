@@ -1,0 +1,52 @@
+{
+  "name": "security-ms",
+  "version": "1.0.0",
+  "description": "Authorization MS",
+  "main": "index.js",
+  "scripts": {
+    "test": "APP_ENV=local node_modules/.bin/mocha tests/**/**/**/*Test.js --timeout=3300 --exit ",
+    "dev": "nodemon index.js",
+    "docs": "swagger-jsdoc -d swaggerdoc.js -o apidoc/apidoc.yml && swagger-markdown -i apidoc/apidoc.yml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/ingesofteam/security-ms"
+  },
+  "author": "IngesoftEAM",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "ajv": "^6.1.1",
+    "async": "^2.6.0",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.2",
+    "faker": "^4.1.0",
+    "ioredis": "4.16.1",
+    "log4js": "^6.3.0",
+    "moment-timezone": "^0.5.33",
+    "mongoose": "^5.12.5",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "run": "^1.4.0",
+    "test": "^0.6.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "apidoc": "^0.27.1",
+    "apidocjs-markdown": "^0.2.2",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "sinon": "^10.0.0",
+    "swagger-markdown": "^1.4.3"
+  },
+  "homepage": "https://bitbucket.org/ingesofteam/security-ms"
+}
