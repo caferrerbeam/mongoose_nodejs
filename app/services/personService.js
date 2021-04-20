@@ -4,7 +4,7 @@ const { NotFoundError, BusinessError } = require('../utils/ErrorHandlerMiddlewar
 const PersonaRepository = require('../repositories/personRepository');
 
 PersonService.findById = async (id) => {
-  const person = PersonaRepository.find(id);
+  const person = await PersonaRepository.find(id);
 
   if (!person) {
     throw new NotFoundError('person not found');
@@ -15,7 +15,7 @@ PersonService.findById = async (id) => {
 
 PersonService.create = async (person) => {
   const personByEmail = await PersonaRepository.findByEmail(person.email);
-  console.log(personByEmail);
+
   if (personByEmail.length > 0) {
     throw new BusinessError('email already taken');
   }

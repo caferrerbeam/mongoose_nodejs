@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const Persona = require('../model/persona');
 
 PersonaRepository.find = (id) => {
-  // const objectId = mongoose.Types.ObjectId(id);
-  const query = Persona.findById(id);
+  const objectId = mongoose.Types.ObjectId(id);
+  const query = Persona.findById(objectId);
 
   return query.exec();
 };

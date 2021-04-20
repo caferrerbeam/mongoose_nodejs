@@ -9,7 +9,9 @@ const PersonaRepository = require('../../app/repositories/personRepository');
 const API = '/api/people';
 chai.use(chaiHttp);
 
-describe('Shopper CRUD flows', () => {
+// BDT: behavioral driven test
+
+describe('person CRUD flows', () => {
   beforeEach(async () => {
     await DBHelper.clearAll();
   });
@@ -36,7 +38,7 @@ describe('Shopper CRUD flows', () => {
       const person = await PersonaRepository.find(id);
 
       assert.isNotNull(person);
-      assert.strictEqual(person.name, 'camilo');
+      assert.equal(person.name, 'camilo');
     }));
 
   it('create person email validation success', async () => {
@@ -56,7 +58,8 @@ describe('Shopper CRUD flows', () => {
     return chai
       .request(app)
       .post(`${API}/persons`)
-      .send(data).then(async (response) => {
+      .send(data)
+      .then(async (response) => {
         const { body, status } = response;
         assert.equal(status, 412);
         assert.deepEqual(body, {
@@ -68,7 +71,7 @@ describe('Shopper CRUD flows', () => {
       });
   });
 
-  it.only('find person by id success', async () => {
+  it('find person by id success', async () => {
     const data = {
       name: 'camilo',
       lastName: 'ferrer',
@@ -94,12 +97,17 @@ describe('Shopper CRUD flows', () => {
       });
   });
 
-  it('find person by id not found', async () => chai
+  it.only('find person by id not found', async () => chai
     .request(app)
-    .get(`${API}/persons/1`)
+    .get(`${API}/persons/607ece8befbfb6bfd4f135c8`)
     .then(async (response) => {
       const { body, status } = response;
       assert.equal(status, 404);
-      assert.deepEqual(body, {});
+      assert.deepEqual(body, {
+        error: {
+          message: 'person not found',
+          code: 404,
+        },
+      });
     }));
 });
