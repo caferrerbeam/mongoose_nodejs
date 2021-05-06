@@ -11,8 +11,7 @@ const {
   IS_SRV = false,
 } = process.env;
 
-const MONGO_URL = `mongodb:${IS_SRV ? '+srv' : ''}//${DB_USER && DB_PASS
-  ? (`${DB_USER}:${DB_PASS}@`) : ''}${DB_HOST}:${DB_PORT}/${DB_NAME}`;
+const MONGO_URL = process.env.MONGO_URL;
 
 Database.connect = async () => {
   await mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
