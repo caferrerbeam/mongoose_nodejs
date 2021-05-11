@@ -23,7 +23,7 @@ app.use(ErrorHandler);
 
 app.listen(PORT, () => {
   console.log('Escuchando puerto:', PORT);
-  //DB.connect().then('connection succesfull');
+  DB.connect().then('connection succesfull');
 });
 
 module.exports = app;
