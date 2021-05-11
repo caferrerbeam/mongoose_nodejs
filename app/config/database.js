@@ -9,9 +9,8 @@ const {
   DB_USER,
   DB_PASS,
   IS_SRV = false,
+  MONGO_URL = 'mongodb://user:pass@mongo_db:27017/admin',
 } = process.env;
-
-const MONGO_URL = process.env.MONGO_URL;
 
 Database.connect = async () => {
   await mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
