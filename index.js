@@ -6,6 +6,7 @@ const { ErrorHandler } = require('./app/utils/ErrorHandlerMiddleware');
 const { PREFIX } = require('./app/config/AppConfig');
 const DB = require('./app/config/database');
 
+// get config vars
 const app = express();
 const { PORT = 3000 } = process.env;
 
